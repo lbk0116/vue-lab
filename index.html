@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message" placeholder="input">
+        <h1>{{ message }}</h1>
+        <p v-if="show">show time!</p>
+        <button v-on:click="handleClose">hidden</button>
+        <a v-bind:href="url">clickme</a>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el : "#app",
+        data : {
+            message: "hello world",
+            show: true,
+            url: "http://www.baidu.com",
+        },
+        created: function () {
+            console.log(this.message);
+        },
+        mounted: function () {
+            console.log(this.$el);
+        },
+        methods: {
+            handleClose: function () {
+                this.show = false;
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shopping cart</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <template v-if="itemList.length">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <button @click="selectAll">全选</button>
+                        </th>
+                        <th>商品名称</th>
+                        <th>商品单价</th>
+                        <th>购买数量</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in itemList">
+                        <td>{{ item.id }}</td>
+                        <td>
+                            <input type="checkbox" v-model="item.isSelect" value="checked"/>
+                            <!--{{ item.isSelect }}-->
+                        </td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.price }}</td>
+                        <td type="number">
+                            <button @click="minus(index)" :disabled="item.count===0">-</button>
+                            {{ item.count }}
+                            <button @click="add(index)">+</button>
+                        </td>
+                        <td>
+                            <button @click="remove(index)">移除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>总价：{{ totalPrice }}</div>
+        </template>
+        <div v-else>购物车为空</div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
