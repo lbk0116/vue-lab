@@ -5,12 +5,41 @@
     <title>The first components test</title>
 </head>
 <body>
-
+<div id="app">
+    <!--<my-test></my-test>-->
+    <!--<table>-->
+        <!--<tbody is="my-table"></tbody>-->
+    <!--</table>-->
+    <my-button></my-button>
+    <my-button></my-button>
+    <my-button></my-button>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
+    var data = {
+        counter: 0
+    };
+
+    Vue.component('my-test', {
+        template: '<h1>here is the components</h1>'
+    });
+
+    Vue.component('my-table', {
+        template: '<div>here is the table components</div>'
+    });
+
+    Vue.component('my-button', {
+        template: '<button @click="counter++">{{ counter }}</button>',
+        data: function () {
+            return {
+                counter: 0
+            };
+        }
+    });
+
     var app = new Vue({
-        Vue.component('')
+        el: '#app',
     })
 </script>
 </body>

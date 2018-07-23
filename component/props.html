@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>the excecise of props</title>
+</head>
+<body>
+<div id="app">
+    <my-component message="come from parent data"></my-component>
+    <camel warning-text="test for camel Case"></camel>
+    <input type='text' v-model="parentMessage"/>
+    <active :message1="parentMessage"></active>
+</div>
+<script src="../vue.js"></script>
+<script>
+    Vue.component('my-component', {
+        props: ['message'],
+        template: '<div>{{ message }}</div>'
+    });
+
+    Vue.component('camel', {
+        props: ['warning-text'],
+        template: '<div>{{ warningText }}</div>'
+    });
+
+    Vue.component('active',{
+       props: ['message1'],
+       template: '<div>{{ message1 }}</div>'
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            parentMessage: 'test'
+        }
+    })
+
+</script>
+</body>
+</html>
